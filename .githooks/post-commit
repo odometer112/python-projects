@@ -1,0 +1,7 @@
+#!/bin/sh
+# post-commit hook - 提交后自动推送到 GitHub
+# 安装方法: cp post-commit .githooks/
+
+echo "Auto-pushing to GitHub..."
+git push
+echo "Push complete!"

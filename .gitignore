@@ -37,3 +37,12 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+
+# Environment Variables (NEVER commit these!)
+.env
+.env.local
+.env.*.local
+
+# Local config overrides
+*.local.yaml
+config.local.py

@@ -1,0 +1,26 @@
+#!/bin/sh
+# pre-commit hook - 代码提交前检查
+# 安装方法: cp pre-commit .git/hooks/
+
+echo "Running pre-commit checks..."
+
+# 检查 Python 语法
+echo "Checking Python syntax..."
+for file in $(git diff --cached --name-only --diff-filter=ACM | grep '\.py$'); do
+    if ! python -m py_compile "$file" 2>/dev/null; then
+        echo "ERROR: Syntax error in $file"
+        echo "Please fix the syntax error before committing."
+        exit 1
+    fi
+done
+
+# 检查尾随空白
+echo "Checking for trailing whitespace..."
+for file in $(git diff --cached --name-only --diff-filter=ACM); do
+    if grep -qE '[[:space:]]$' "$file" 2>/dev/null; then
+        echo "WARNING: Trailing whitespace found in $file"
+    fi
+done
+
+echo "Pre-commit checks passed!"
+exit 0

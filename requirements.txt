@@ -1,0 +1,1 @@
+requests\nnumpy\npandas\npillow\nmatplotlib\nseabor\njupyter
